@@ -17,7 +17,7 @@ Alternatively:
 ## Usage: 
 1. Command line: 
   ``` 
-  $ python3 xpathreader.py -i filename1.xml filename2.xml filename3.xml -f .//tag1/tag2 .//tag6/tag7 
+  $ python3 xpathreader.py -i filename1.xml filename2.xml filename3.xml -f .//tag1/tag2 .//tag6/tag7 -e utf-8
   ```
   Syntax explaination:
    - `-i` specfies input file path, multiple file paths are supported and seperated by space.
@@ -25,10 +25,11 @@ Alternatively:
    - `-o` specifies output mode, currently list or string mode are supported. 
      -   `-o s` or `-o string` for string mode
      -   `-o l` or `-o list` for list mode (default)
+   - `-e`specifies the file encoding. Input in lower case. 
 2. Importing from PIP Package:
 ```
 import xpathreader
-out = xpathreader.read(filePath,findTag,outputMode) #outputMode = "list" or "string"
+out = xpathreader.read(filePath,findTag,outputMode,encoding) #outputMode = "list" or "string"
 ```
 
    
