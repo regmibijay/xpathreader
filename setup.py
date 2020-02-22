@@ -9,7 +9,6 @@ setuptools.setup(
     author='Bijay Regmi',
     author_email='bijay.regmi@uni-bonn.de',
     description='Reads xPath files. Documentation: https://regmi-solutions.de/xpathreader',
-    install_requires = ['xml'],
     python_requires = '>=3.6',
     classifiers=[
         "Programming Language :: Python :: 3",
