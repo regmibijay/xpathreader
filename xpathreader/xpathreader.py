@@ -5,14 +5,14 @@ from argparse import ArgumentParser
 def read(inputPath,findTag,outputMode = "list",encoding = "utf-8"):
  xmlString  = ""
  with open(inputPath,mode = "r",encoding = encoding) as f:
-  xmlString = f.readlines()
+  xmlString = f.read()
  if not encoding == "utf-8":
   xmlString = xmlString.encode("utf-8")
  tree = ET.fromstring(xmlString)
  tags = tree.findall(findTag)
  n = len(tags)
  if outputMode == "s" or outputMode == "string" or outputMode == 1:
-  return " ".join(str(x) for x in tags)
+  return " ".join(str(x.text) for x in tags),n
  return tags,n
 def checkURL(path):
  if os.path.isfile(path):
