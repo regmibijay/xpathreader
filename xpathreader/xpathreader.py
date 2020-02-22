@@ -1,10 +1,13 @@
 import os,sys
+from io import open
 from xml.etree import ElementTree as ET
 from argparse import ArgumentParser
-def read(inputPath,findTag,outputMode):
+def read(inputPath,findTag,outputMode = "list",encoding = "utf-8"):
  xmlString  = ""
- with open(inputPath,"r") as f:
+ with open(inputPath,mode = "r",encoding = encoding) as f:
   xmlString = f.readlines()
+ if not encoding == "utf-8":
+  xmlString = xmlString.encode("utf-8")
  tree = ET.fromstring(xmlString)
  tags = tree.findall(findTag)
  n = len(tags)
@@ -20,6 +23,7 @@ def main(argv):
  p.add_argument("-i",help = "Input File, supports multiple file input", nargs = "+")
  p.add_argument("-f", help = "Tag as string, supports multiple tags", nargs = "+")
  p.add_argument("-o", help = "Output mode, list(l) or string(s)", default = "list")
+ p.add_argument("-e", help = "Encoding of files, default is UTF-8",default = "utf-8")
  arg = p.parse_args()
  if arg.i is None or arg.f is None:
   print ("Please specify at least one valid xPath file URL and a tag to search for")
@@ -28,7 +32,7 @@ def main(argv):
  for path in arg.i:
   print ("Reading: ",path)
   if not checkURL(path):
-     print ("-> Does not seem to be a valid URL, skipping")
+     print ("-> Does not seem to be a valid/existing file, skipping")
      continue  
   for tag in arg.f:
     print ("-> Searching for ",tag)
