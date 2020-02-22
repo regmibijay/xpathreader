@@ -1,7 +1,10 @@
 # xPathreader
-Reads xPath document and outputs tags specified
+Reads xPath documents and outputs specified tags.
 
 ## Installation:
+You can install xpathreader from pip directly using `pip3 install xpathreader`
+
+Alternatively:
 1. Cloning this repository:
   - `git clone https://github.com/regmibijay/xpathreader`
 2. Building a pip wheel:
